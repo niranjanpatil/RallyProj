@@ -1,0 +1,69 @@
+package com.rally.drools
+ 
+
+import com.rally.drools.MachineAnalyzer.Machine;
+
+
+rule "Loud"
+    when
+        m : Machine( (speed > 3 && videoCard == "premium") || memory > 16)
+    then
+    	m.setLoudflag(true);
+  
+   
+end
+
+rule "Cheap"
+    when
+        m : Machine(price<1000)
+    then
+    	m.setCheapflag(true);
+   
+      
+end
+
+rule "Expensive"
+    when
+        m : Machine( price > 4000)
+    then
+    	m.setExpensiveflag(true);
+   
+end        
+     
+
+rule "Hot"
+    when
+        m : Machine( memory > 8 || speed >4)
+    then
+    	m.setHotflag(true);
+    	m.setHotflag(true);
+  
+      
+end
+
+rule "Game"
+    when
+        m : Machine(videoCard == "premium" || (videoCard=="average" && speed > 2))
+    then
+    	m.setGameflag(true);
+    
+      
+end
+
+rule "crunch numbers"
+    when
+        m : Machine((speed > 4 && memory > 4) || videoCard == "premium")
+    then
+    	m.setCrunchflag(true);
+  
+end
+
+rule "risky"
+    when
+        m : Machine(price<1000 && (memory > 8 || speed >4) )
+    then
+    	m.setRiskyflag(true);
+      
+end
+
+
